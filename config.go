@@ -9,12 +9,12 @@ import (
 
 type _Config struct {
 	Version    string
-	Separetor  string
+	Separator  string
 	Dictionary []string
 }
 
 var Config _Config
-var iversion = "20210929"
+var iversion = "202109291"
 var preset = []string{
 	"裸体",
 	"发情",
@@ -105,7 +105,7 @@ func SaveConfig() {
 func setDefaultConfig() {
 	Config.Version = iversion
 	Config.Dictionary = append(Config.Dictionary, preset...)
-	Config.Separetor = "^"
+	Config.Separator = "^"
 	SaveConfig()
 }
 

@@ -13,14 +13,12 @@ import (
 
 var rpath string
 var spath string
-var mode int
 
 func init() {
 	rand.Seed(time.Now().UnixNano())
 	InitConfig()
 	flag.StringVar(&rpath, "i", "", "目标路径")
 	flag.StringVar(&spath, "o", "", "保存路径")
-	flag.IntVar(&mode, "m", 0, "0 单文件 1 文件夹")
 	flag.Parse()
 	if !CheckFileExist(spath) {
 		os.MkdirAll(spath, 0600)
@@ -28,10 +26,15 @@ func init() {
 }
 
 func main() {
-	switch mode {
-	case 0:
+	f, err := os.Open(rpath)
+	if err != nil {
+		panic(err)
+	}
+	stat, _ := f.Stat()
+	switch stat.IsDir() {
+	case false:
 		processFile(rpath)
-	case 1:
+	case true:
 		filepath.Walk(rpath, func(path string, info os.FileInfo, err error) error {
 			if err == nil && !info.IsDir() {
 				if strings.HasSuffix(path, ".txt") {
@@ -70,7 +73,7 @@ func shaTang(file *os.File) {
 func neutralize(s string) string {
 	s2 := []rune(s)
 	i := roll(1, len(s2))
-	sep2 := []rune(Config.Separetor)
+	sep2 := []rune(Config.Separator)
 	newstrarr := []rune{}
 	newstrarr = append(newstrarr, s2[:i]...)
 	newstrarr = append(newstrarr, sep2...)

@@ -11,11 +11,10 @@
 
 ## 参数说明
 
-| 选项 | 说明                                             |
-| ---- | ------------------------------------------------ |
-| -i   | 指定要修改的文件或目录                           |
-| -s   | 指定保存结果的目录                               |
-| -m   | 指定工作方式 0 为单文件 1 为在文件夹中的所有文件 |
+| 选项 | 说明                   |
+| ---- | ---------------------- |
+| -i   | 指定要修改的文件或目录 |
+| -s   | 指定保存结果的目录     |
 
 注意本程序仅处理文本文件(后缀为`.txt`)
 
@@ -25,7 +24,7 @@
 | ---------- | --------------------------- |
 | Version    | 配置文件的版本号            |
 | Dictionary | 屏蔽词列表 用户可以自行修改 |
-| Separetor  | 用于插^入屏蔽词中间的分隔符 |
+| Separator  | 用于插^入屏蔽词中间的分隔符 |
 
 ## 使用方法举例
 
@@ -34,7 +33,7 @@
 `.\` 表示当前目录
 
 ```
-.\shatang.exe -m 0 -i .\test\测试.txt -o .\out\
+.\shatang.exe -i .\test\测试.txt -o .\out\
 正在处理 D:\novel\shatang\test\测试.txt
 ```
 
@@ -48,7 +47,7 @@
 ### 处理目录下的所有文件
 
 ```
-.\shatang.exe -m 1 -i .\test\ -o .\out\
+.\shatang.exe -i .\test\ -o .\out\
 正在处理 D:\novel\shatang\test\测试 - 副本.txt
 正在处理 D:\novel\shatang\test\测试.txt
 ```
@@ -56,7 +55,7 @@
 也可以使用绝对路径
 
 ```
-.\shatang.exe -m 1 -i D:\novel\shatang\test -o D:\novel\shatang\out
+.\shatang.exe -i D:\novel\shatang\test -o D:\novel\shatang\out
 正在处理 D:\novel\shatang\test\测试 - 副本.txt
 正在处理 D:\novel\shatang\test\测试.txt
 ```
@@ -69,7 +68,7 @@
 
 ## 如何修改插入字符
 
-修改目录下的`config.json`，`Separetor`键的内容即为隔断字符串
+修改目录下的`config.json`，`separator`键的内容即为隔断字符串
 
 ## 如何打开终端
 
